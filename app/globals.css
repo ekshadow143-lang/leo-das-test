@@ -20,7 +20,7 @@ nav a{color:var(--ink);text-decoration:none;opacity:.8;cursor:pointer}nav a:hove
 .scroller{display:flex;gap:14px;overflow-x:auto;padding:6px 0 22px;scroll-snap-type:x proximity}
 .poster{flex:0 0 min(46vw,230px);aspect-ratio:2/3;position:relative;background:#120f14;border:1px solid var(--line);overflow:hidden;cursor:pointer;scroll-snap-align:start;transition:.35s;padding:0;display:block}
 .poster:hover,.poster:focus-visible{transform:scale(1.06);border-color:var(--gold);z-index:3;box-shadow:0 20px 50px #000;outline:none}
-.poster>img,.poster>video{width:100%;height:100%;object-fit:cover;object-position:top}
+.poster>img,.poster>video{width:100%;height:100%;object-fit:cover;object-position:35% 50%}
 .tile{flex:0 0 min(70vw,340px);aspect-ratio:16/9}.still{cursor:default}.still:hover{transform:none}
 .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:14px;border:1px dashed #5a4a2a;background:repeating-linear-gradient(45deg,#0e0b10,#0e0b10 12px,#120e14 12px,#120e14 24px);color:var(--dim);font-size:12px}
 .ph b{color:var(--gold);font-family:var(--f-cin),serif;letter-spacing:.15em;font-size:12px}
@@ -50,3 +50,9 @@ footer{padding:50px 5vw 70px;border-top:1px solid var(--line);color:var(--dim);f
 .page{padding-top:110px;min-height:75vh}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.grid .tile{flex:none}
 .anav{display:flex;gap:18px;flex-wrap:wrap;padding:calc(18px + env(safe-area-inset-top)) 5vw 16px;border-bottom:1px solid var(--line);font-size:11px;align-items:center}.anav a{color:var(--ink);text-decoration:none}.anav a.on{color:var(--gold)}
 pre{white-space:pre-wrap;font-size:12px;color:var(--dim);margin-top:10px}
+
+/* reveal: when the member image is a full horizontal card, show it whole, edge to edge */
+.rev .c.full{display:block;max-width:none;padding:0;height:100vh}
+.rev .c.full .t{display:none}
+.rev .c.full .pic{aspect-ratio:auto;max-height:none;width:100%;height:100%;margin:0;box-shadow:none}
+.rev .c.full .pic>img{object-fit:contain;object-position:center}
