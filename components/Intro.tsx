@@ -3,7 +3,7 @@ import {useEffect,useState} from 'react';import {INTRO} from '@/lib/config';impo
 export default function Intro(){
  const {play,media}=useSite();const [st,setSt]=useState('wait');const [w,setW]=useState(0);const [fade,setFade]=useState(false);
  useEffect(()=>{if(sessionStorage.getItem('ld-intro'))setSt('done')},[]);
- const go=()=>{setSt('run');play('introVoice');play('bgm',true,.3);
+ const go=()=>{setSt('run');play('intro-voice');play('bgm',true,.3);
   [INTRO.veniAt,INTRO.vidiAt,INTRO.viciAt,INTRO.logoAt].forEach((t,i)=>setTimeout(()=>setW(i+1),t*1000));
   setTimeout(()=>setFade(true),INTRO.finishAt*1000);
   setTimeout(()=>{setSt('done');sessionStorage.setItem('ld-intro','1')},INTRO.finishAt*1000+1300)};

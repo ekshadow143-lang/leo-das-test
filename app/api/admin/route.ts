@@ -2,10 +2,12 @@ import {NextResponse} from 'next/server';import {createClient} from '@supabase/s
 export async function POST(req:Request){
  const b=await req.json();
  if(b.password!==(process.env.ADMIN_PASSWORD||'love')){await new Promise(r=>setTimeout(r,1200));return NextResponse.json({error:'denied'},{status:401})}
- const s=createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.SUPABASE_SERVICE_ROLE_KEY!);const ok=NextResponse.json({ok:1});
+ const s=createClient(process.env.NEXT_PUBLIC_SUPABASE_URL||'https://missing.supabase.co',process.env.SUPABASE_SERVICE_ROLE_KEY||'missing');const ok=NextResponse.json({ok:1});
  const fail=(e:any)=>NextResponse.json({error:e?.message||'error'},{status:500});
  switch(b.action){
   case 'login':return ok;
+  case 'diagnose':{const u=process.env.NEXT_PUBLIC_SUPABASE_URL||'';let reach='ok';try{const {error}=await s.storage.listBuckets();if(error)reach=error.message}catch(e:any){reach=e.message}
+   return NextResponse.json({urlSet:!!u,urlLooksRight:/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(u),serviceKeySet:!!process.env.SUPABASE_SERVICE_ROLE_KEY,reach})}
   case 'signedUrl':{const path=`${String(b.slot).replace(/[^\w-]/g,'_')}-${Date.now()}-${String(b.name).replace(/[^\w.-]/g,'_')}`;
    const {data,error}=await s.storage.from('media').createSignedUploadUrl(path);if(error)return fail(error);return NextResponse.json({path,token:data.token})}
   case 'setMedia':{const {data}=s.storage.from('media').getPublicUrl(b.path);const {error}=await s.from('media').upsert({slot:b.slot,url:data.publicUrl,type:b.type});return error?fail(error):ok}

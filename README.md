@@ -19,8 +19,11 @@ npm run dev
 3. Add the 4 environment variables from `.env.example` (SUPABASE_SERVICE_ROLE_KEY and ADMIN_PASSWORD are server-only — do not prefix with NEXT_PUBLIC).
 4. Deploy.
 
-## 4. Add your media
-Open `https://YOUR-SITE/admin` (no link to it exists on the public site), enter the password, and upload intro voice, music, videos, member images, moments, vault items and your WhatsApp links. Placeholders on the public site tell you what goes where.
+## 4. Add your media (easiest way: the folder)
+Put files in `public/media/` named as listed in `public/media/README.txt` (e.g. `bgm.mp3`, `intro-voice.mp3`, `moment-01.mp4`, `member-kingzz-120hz.png`), commit and push. Vercel redeploys and the site uses them. No Supabase needed for this.
+
+## 4b. Add media from the admin page instead
+Open `https://YOUR-SITE/admin` (pages: Dashboard, Requests, Media, Members, Moments, Vault; Dashboard has a Supabase connection test) (no link to it exists on the public site), enter the password, and upload intro voice, music, videos, member images, moments, vault items and your WhatsApp links. Placeholders on the public site tell you what goes where.
 Supabase free plan limits each upload to 50 MB — compress long videos.
 
 ## Notes

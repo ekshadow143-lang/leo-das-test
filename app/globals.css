@@ -8,7 +8,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top)) 4vw 14px;background:linear-gradient(#000c,transparent)}
 nav .logo{font-size:32px;color:var(--red);text-shadow:0 0 18px #c8102e66}nav .links{display:flex;gap:22px;font-size:11px;align-items:center}
 nav a{color:var(--ink);text-decoration:none;opacity:.8;cursor:pointer}nav a:hover{opacity:1;color:var(--gold)}
-@media(max-width:700px){nav .links a:not(.keep){display:none}}
+@media(max-width:700px){nav{flex-wrap:wrap;gap:6px}nav .links{width:100%;overflow-x:auto;gap:16px;white-space:nowrap}}
 .sb{background:none;border:1px solid var(--line);padding:8px 12px;font-size:11px;letter-spacing:.15em;min-height:40px}
 .hero{height:100vh;min-height:560px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
 .hero>.bg{position:absolute;inset:0}.hero>.bg>*{width:100%;height:100%;object-fit:cover}
@@ -46,3 +46,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}.e
 .sm{border:1px solid var(--line);background:none;padding:8px 12px;font-size:12px;min-height:40px}
 footer{padding:50px 5vw 70px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;text-align:center}
 @media(prefers-reduced-motion:reduce){*{transition-duration:.01s!important;animation:none!important;scroll-behavior:auto!important}}
+
+.page{padding-top:110px;min-height:75vh}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}.grid .tile{flex:none}
+.anav{display:flex;gap:18px;flex-wrap:wrap;padding:calc(18px + env(safe-area-inset-top)) 5vw 16px;border-bottom:1px solid var(--line);font-size:11px;align-items:center}.anav a{color:var(--ink);text-decoration:none}.anav a.on{color:var(--gold)}
+pre{white-space:pre-wrap;font-size:12px;color:var(--dim);margin-top:10px}
